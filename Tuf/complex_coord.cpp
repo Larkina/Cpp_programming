@@ -14,53 +14,17 @@ complex_coord operator+(const complex_coord& a, const complex_coord& b){
 	return complex_coord(a.re + b.re, a.im + b.im);
 }
 
-complex_coord operator+(double a, const complex_coord& b){
-	return complex_coord(a + b.re, b.im);	
-}
-
-complex_coord operator+(const complex_coord& b, double a){
-	return a + b;	
-}
-
 complex_coord operator-(const complex_coord& a, const complex_coord& b){
 	return complex_coord(a.re - b.re, a.im - b.im);
-}
-
-complex_coord operator-(double a, const complex_coord& b){
-	return complex_coord(a - b.re, -b.im);	
-}
-
-complex_coord operator-(const complex_coord& b, double a){
-	return complex_coord(b.re - a, b.im);	
 }
 
 complex_coord operator*(const complex_coord& a, const complex_coord& b){
 	return complex_coord(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
 }
 
-complex_coord operator*(double a, const complex_coord& b){
-	return complex_coord(a * b.re,  a * b.im);	
-}
-
-complex_coord operator*(const complex_coord& b, double a){
-	return a * b;	
-}
-
 complex_coord operator/(const complex_coord& a, const complex_coord& b){
 	return complex_coord((a.re * b.re + a.im * b.im)/(b.re * b.re + b.im * b.im), 
 				   (a.im * b.re - a.re * b.im)/(b.re * b.re + b.im * b.im));
-}
-
-complex_coord operator/(double a, const complex_coord& b){
-	return complex_coord(a)/b;	
-}
-
-complex_coord operator/(const complex_coord& b, double a){
-	if (a == 0){
-		cout << "Division by zero!" << endl;
-		return complex_coord();
-	}
-	return complex_coord(b.re / a, b.im / a);	
 }
 
 complex_coord operator+=(complex_coord& a, const complex_coord& b){
@@ -75,15 +39,7 @@ complex_coord operator*=(complex_coord& a, const complex_coord& b){
 	return a = a * b;
 }
 
-complex_coord operator*=(complex_coord& a, double b){
-	return a = a * b;
-}
-
 complex_coord operator/=(complex_coord& a, const complex_coord& b){
-	return a = a / b;
-}
-
-complex_coord operator/=(complex_coord& a, double b){
 	return a = a / b;
 }
 

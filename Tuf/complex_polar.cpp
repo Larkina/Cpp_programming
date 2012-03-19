@@ -31,13 +31,11 @@ void complex_polar::update_re_and_im(){
 }
 
 complex_polar operator+(const complex_polar& a, const complex_polar& b){
-	complex_coord t(a.r * cos(a.fi), a.r * sin(a.fi)), t1(b.r * cos(b.fi), b.r * sin(b.fi)); 
-	return t + t1;
+	return complex_polar(a.r * cos(a.fi) + b.r * cos(b.fi), a.r * sin(a.fi)+ b.r * sin(b.fi));
 }
 
 complex_polar operator-(const complex_polar& a, const complex_polar& b){
-	complex_coord t(a.r * cos(a.fi), a.r * sin(a.fi)), t1(b.r * cos(b.fi), b.r * sin(b.fi)); 
-	return t - t1;
+	return complex_polar(a.r * cos(a.fi) - b.r * cos(b.fi), a.r * sin(a.fi)- b.r * sin(b.fi));
 }
 
 complex_polar operator*(const complex_polar& a, const complex_polar& b){
@@ -48,14 +46,6 @@ complex_polar operator*(const complex_polar& a, const complex_polar& b){
 	return t;
 }
 
-complex_polar operator*(double a, const complex_polar& b){
-	return complex_polar(a) * b;
-}
-
-complex_polar operator*(const complex_polar& b, double a){
-	return complex_polar(a) * b;
-}
-
 complex_polar operator/(const complex_polar& a, const complex_polar& b){
 	if (b.r == 0)
 		return complex_polar();
@@ -64,14 +54,6 @@ complex_polar operator/(const complex_polar& a, const complex_polar& b){
 	t.fi = a.fi - b.fi;
 	t.update_re_and_im();
 	return t;
-}
-
-complex_polar operator/(double a, const complex_polar& b){
-	return complex_polar(a) / b;
-}
-
-complex_polar operator/(const complex_polar& b, double a){
-	return b / complex_polar(a);
 }
 
 complex_polar operator+=(complex_polar& a, const complex_polar& b){
@@ -86,15 +68,7 @@ complex_polar operator*=(complex_polar& a, const complex_polar& b){
 	return a = a * b;
 }
 
-complex_polar operator*=(complex_polar& a, double b){
-	return a = a * b;
-}
-
 complex_polar operator/=(complex_polar& a, const complex_polar& b){
-	return a = a / b;
-}
-
-complex_polar operator/=(complex_polar& a, double b){
 	return a = a / b;
 }
 

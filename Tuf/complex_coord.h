@@ -12,27 +12,14 @@ public:
 	complex_coord();
 
 	friend complex_coord operator+(const complex_coord& a, const complex_coord& b);
-	friend complex_coord operator+(double a, const complex_coord& b);
-	friend complex_coord operator+(const complex_coord& b, double a);
-
 	friend complex_coord operator-(const complex_coord& a, const complex_coord& b);
-	friend complex_coord operator-(double a, const complex_coord& b);
-	friend complex_coord operator-(const complex_coord& b, double a);
-
 	friend complex_coord operator*(const complex_coord& a, const complex_coord& b);
-	friend complex_coord operator*(double a, const complex_coord& b);
-	friend complex_coord operator*(const complex_coord& b, double a);
-
 	friend complex_coord operator/(const complex_coord& a, const complex_coord& b);
-	friend complex_coord operator/(double a, const complex_coord& b);
-	friend complex_coord operator/(const complex_coord& b, double a);
 
 	friend complex_coord operator+=(complex_coord& a, const complex_coord& b);
 	friend complex_coord operator-=(complex_coord& a, const complex_coord& b);
 	friend complex_coord operator*=(complex_coord& a, const complex_coord& b);
-	friend complex_coord operator*=(complex_coord& a, double b);
 	friend complex_coord operator/=(complex_coord& a, const complex_coord& b);
-	friend complex_coord operator/=(complex_coord& a, double b);
 
 	friend complex_coord operator-(complex_coord& a);
 

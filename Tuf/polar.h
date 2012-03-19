@@ -13,28 +13,16 @@ public:
 	complex_polar(double _re);
 	complex_polar(const complex_coord& a);
 	complex_polar();
-	
-	double getRe() const;
-	double getIm() const;
 
 	friend complex_polar operator+(const complex_polar& a, const complex_polar& b);
-
 	friend complex_polar operator-(const complex_polar& a, const complex_polar& b);
-
 	friend complex_polar operator*(const complex_polar& a, const complex_polar& b);
-	friend complex_polar operator*(double a, const complex_polar& b);
-	friend complex_polar operator*(const complex_polar& b, double a);
-
 	friend complex_polar operator/(const complex_polar& a, const complex_polar& b);
-	friend complex_polar operator/(double a, const complex_polar& b);
-	friend complex_polar operator/(const complex_polar& b, double a);
 
 	friend complex_polar operator+=(complex_polar& a, const complex_polar& b);
 	friend complex_polar operator-=(complex_polar& a, const complex_polar& b);
 	friend complex_polar operator*=(complex_polar& a, const complex_polar& b);
-	friend complex_polar operator*=(complex_polar& a, double b);
 	friend complex_polar operator/=(complex_polar& a, const complex_polar& b);
-	friend complex_polar operator/=(complex_polar& a, double b);
 
 	friend complex_polar operator-(complex_polar& a);
 
