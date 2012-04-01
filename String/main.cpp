@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "m_string.h"
 
 using namespace std;
@@ -16,7 +17,9 @@ void print_msg_and_inc_tests_count(bool res, int line){
 
 void print_result(){
 	cout << correct << " - PASSED " << endl;
-	cout << tests_count - correct << " - FAILED " << endl;
+	cout << tests_count - correct << " - failed " << endl;
+	if (tests_count == correct)
+		cout << "Solution Accepted" << endl;
 	int t;
 	cin >> t;
 }
@@ -30,8 +33,56 @@ const
 	char* str = "Ababaca";
 
 int main(){
+	// link count 
+	{
+			String a = "abc";
+		{
+			String b = a;
+			String с = b, d = a;
+		}
+		test(a.get_link_count(), 1);
+		{
+			String b = a;
+			String c = a + b;
+			test(c.get_link_count(), 1);
+			test(a.get_link_count(), 2);
+		}
+		{
+			String b = "abba";
+			b += "Test";
+			test(b.get_link_count(), 1);
+		}
+		{
+			String b = a;
+			b += b;
+			test(b.get_link_count(), 1);
+		}
+		// proxy char
+		a[0] = "L";
+		test(strcmp(a.c_str(), "Lbc"), 0);
+		{	
+			String b = a, c = a, t = a;
+			b[2] = "D";
+			c[1] = "S";
+			t[1] = "SD";
+			String h = str;
+			test(a.get_link_count(),t.get_link_count());
+			h[0] = "unbelievable";
+			test(strcmp(c.c_str(), "LSc"), 0);
+			test(strcmp(b.c_str(), "LbD"), 0);	
+			test(strcmp(t.c_str(), "LSD"), 0);
+			test(strcmp(h.c_str(), "unbelievable"), 0);
+		}
+		// operator char()
+		{
+			char d = String("Fascinating")[2];
+			test(d, 's');
+		}
+	}
+	// Старые
+
 	// Конструкторы + c_str
-	String t(str);
+    String t(str);
 	cout << strcmp(t.c_str(), str) << endl;
 	test(strcmp(t.c_str(), str), 0);
 	String a(t);
@@ -60,10 +111,25 @@ int main(){
 	test(strcmp(tmp.c_str(), "T_T >_<"), 0);
 
 	// [], substr
-	test(r[3], 'b');
-	test(tmp[1], '_');
+	String x("Cat");
+	x[0] = "N";
+	test(strcmp(x.c_str(), "Nat"), 0);
+	char tt = r[3];
+	test(tt, 'b');
+	tt = tmp[1];
+	test(tt, '_');
 	test(strcmp(tmp.substr(0, 3).c_str(), "T_T"), 0);
 	test(strcmp(tmp.substr(4, 3).c_str(), ">_<"), 0);
+	
+	//insert delete
+	
+	tmp.insert("O_o ", 3);
+	test(strcmp(tmp.c_str(), "T_T O_o >_<"), 0);
+	t.delete_substr(2, 3);
+	test(strcmp(t.c_str(), "Abca"), 0);
 
+	String k, n("To "), m("or ");
+	k = n + "be " + m + "not " + n  + "be?";
+	test(strcmp(k.c_str(), "To be or not To be?"), 0);
 	print_result();
 }
