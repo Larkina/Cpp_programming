@@ -2,110 +2,125 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-String::String(){
-	buff = NULL;
-}
-
 String::String(const char *s){
-	buff = (char*)malloc(sizeof(s));
-	strcpy(buff, s);
+	int l = strlen(s);
+	buff = new Buffer();
+	buff->str = (char*)malloc(sizeof(char) * (l + 1));
+	strcpy(buff->str, s);
+	buff->len = l;
+	buff->link_count++;
 }
 
 String::~String(){
-//	free(buff);
+	buff->link_count--;
+	//buff->check_link();
 }
 
 String::String(const String &s){
-	buff = (char*)malloc(sizeof(s.c_str()));
-	strcpy(buff, s.c_str());
+	buff = s.buff;
+	buff->link_count++;
 }
 
 const char* String::c_str() const{
-	return buff;
+	return buff->str;
 }
 
 int String::length() const{
-	return strlen(buff);
+	return buff->len;
 }
 
 String& String::operator=(const String &s){
-	buff = (char*)realloc(buff, sizeof(s.c_str()));
-	strcpy(buff, s.c_str());
+	buff->link_count--;
+	buff->check_link();
+	buff = s.buff;
+	buff->link_count++;
 	return *this;
 }
 
 bool String::operator ==(const String &s){
-	return strcmp(buff, s.c_str()) == 0;
+	return strcmp(buff->str, s.c_str()) == 0;
 }
 
 bool String::operator !=(const String &s){
-	return strcmp(buff, s.c_str()) != 0;
+	return strcmp(buff->str, s.c_str()) != 0;
 }
 
 bool String::operator<(const String& s){
-	return length() == s.length() ? strcmp(buff, s.c_str()) < 0 : length() < s.length();
+	return buff->len == s.length() ? strcmp(buff->str, s.c_str()) < 0 : buff->len < s.length();
 }
 
 bool String::operator<=(const String& s){
-	return length() == s.length() ? strcmp(buff, s.c_str()) <= 0 : length() <= s.length();
+	return buff->len == s.length() ? strcmp(buff->str, s.c_str()) <= 0 : buff->len <= s.length();
 }
 
 bool String::operator>(const String& s){
-	return length() == s.length() ? strcmp(buff, s.c_str()) > 0 : length() > s.length();
+	return buff->len == s.length() ? strcmp(buff->str, s.c_str()) > 0 : buff->len > s.length();
 }
 
 bool String::operator>=(const String& s){
-	return length() == s.length() ? strcmp(buff, s.c_str()) >= 0 : length() > s.length();
+	return buff->len == s.length() ? strcmp(buff->str, s.c_str()) >= 0 : buff->len > s.length();
 }
 
-String& operator+(String& a, String& b){
-	char* t = (char*)malloc(sizeof(char) *(a.length() + 1));
-	memset(t, 0, (a.length() + 1) * sizeof(char));
-	memcpy(t, a.c_str(),  sizeof(char) * a.length());
+String operator+(const String& a, const String& b){
+	char* t = (char*)malloc(sizeof(char) *(a.length() + b.length() + 1));
+	memcpy(t, a.c_str(),  sizeof(char) * (a.length() + 1));
 	strcat(t, b.c_str());	
-	String* s = new String(t);
-	return *s;
+	String s(t);
+	free(t);
+	return s;
 }
 
-String& operator+=(String& a, String& b){
+String& operator+=(String& a, const String& b){
 	return a = a + b;
 }
 
-String& operator+=(String& a, char* b){
-	return a = a + String(b);
+ String::proxy_char String::operator[](int idx){
+	return proxy_char(idx, *this);
 }
 
-String& operator+(String& a, char* b){
-	return a + String(b);
-}
-
-String& operator+(char* a, String& b){
-	return String(a) + b;
-}
-
-char String::operator[](int idx){
-	return idx > 0 && idx < length() ? (c_str()[idx]) : NULL;
-}
-
-String& String::substr(int idx, int len){
+String String::substr(int idx, int len) const{
 	char* t = (char*)malloc(sizeof(char) * (len + 1));
 	memset(t, 0, (len + 1) * sizeof(char));
-	strncpy(t, buff + idx, len);
-	String* s = new String(t);
+	strncpy(t, buff->str + idx, len);
+	String s(t);
 	free(t);
-	return *s;
+	return s;
+}
+
+void String::insert(char* s, int idx){
+	char* t = (char*)malloc(sizeof(char) * (length() - idx + 1));
+	strncpy(t, buff->str + idx + 1, sizeof(char) * (length() - idx + 1));
+	buff->str = (char*)realloc(buff->str, sizeof(char) * (strlen(s) + buff->len + 1)); 
+	memset(buff->str + idx + 1, 0, sizeof(char) * (idx + 1));
+	strcat(buff->str, s);
+	strcat(buff->str, t);
+	free(t);
+}
+
+void String::delete_substr(int idx, int len){
+	char* t = (char*)malloc(sizeof(char) * (length() - len + 1));
+	strncpy(t, buff->str + idx + len, sizeof(char) * (length()- len + 1));
+	buff->str = (char*)realloc(buff->str, sizeof(char) * (idx + 1)); 
+	memset(buff->str + idx, 0, sizeof(char) * (idx + 1));
+	strcat(buff->str, t);
+	free(t);
 }
 
 ostream& operator<<(ostream& st, const String& s){
 	return st << s.c_str();
 }
 istream& operator>>(istream& st, String& s){
-	string t;
-	st >> t;
-	s = t.c_str();
+	int size = 5;
+	char* t = (char*) malloc(sizeof(char) * (size + 1));
+	while (1){
+		st.getline(t, size);
+		s += t;
+		if (strlen(t) != size)
+			break;
+	}
+	free(t);
 	return st;
 }
