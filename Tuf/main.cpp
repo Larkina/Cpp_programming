@@ -1,25 +1,14 @@
-<<<<<<< HEAD
 #define _USE_MATH_DEFINES
 
 #include <iostream>
 #include <math.h>
 #include "complex_coord.h"
 #include "complex_polar.h"
-=======
-#include <iostream>
-#include <math.h>
-#include "complex_coord.h"
-#include "polar.h"
->>>>>>> 877dca99a80b638ecb9a7a6905f178de21f129cf
 #include "super_complex.h"
 
 using namespace std;
 
 #define EPS 0.000000001
-<<<<<<< HEAD
-=======
-#define M_PI_2 1.57079632679489661923
->>>>>>> 877dca99a80b638ecb9a7a6905f178de21f129cf
 #define test(a, b, c) m_test(a, b, c, __LINE__)
 #define test2(a, b) m_test(a, b, __LINE__)
 #define Complex complex_polar
@@ -41,11 +30,7 @@ void print_result(){
 }
 
 void m_test(const Complex &a, double ans_re, double ans_im, int line){
-<<<<<<< HEAD
 	print_msg_and_inc_tests_count(abs(a.GetRe() - ans_re) <= EPS && abs(a.GetIm() - ans_im) <= EPS, line);
-=======
-	print_msg_and_inc_tests_count(abs(a.re - ans_re) <= EPS && abs(a.im - ans_im) <= EPS, line);
->>>>>>> 877dca99a80b638ecb9a7a6905f178de21f129cf
 }
 
 void m_test(double res, double ans, int line){
@@ -53,10 +38,6 @@ void m_test(double res, double ans, int line){
 }
 
 int main(){
-<<<<<<< HEAD
-=======
-	//parent_complex *a = new complex_coord(8, 1);
->>>>>>> 877dca99a80b638ecb9a7a6905f178de21f129cf
 	Complex a(8, 1), b(2, -3), c(5, 5);
 	//plus
 	test(a + 22, 30, 1);
