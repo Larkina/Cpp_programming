@@ -11,9 +11,12 @@ public:
 	complex_coord(double _re);
 	complex_coord();
 
+<<<<<<< HEAD
 	virtual double GetRe() const;
 	virtual double GetIm() const;
 
+=======
+>>>>>>> 877dca99a80b638ecb9a7a6905f178de21f129cf
 	friend complex_coord operator+(const complex_coord& a, const complex_coord& b);
 	friend complex_coord operator-(const complex_coord& a, const complex_coord& b);
 	friend complex_coord operator*(const complex_coord& a, const complex_coord& b);

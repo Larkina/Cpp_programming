@@ -10,6 +10,7 @@ complex_coord::complex_coord(double _re): re(_re), im(0) {}
 
 complex_coord::complex_coord(): re(0), im(0) {}
 
+<<<<<<< HEAD
 double complex_coord::GetIm() const {
 	return im;
 }
@@ -18,6 +19,8 @@ double complex_coord::GetRe() const {
 	return re;
 }
 
+=======
+>>>>>>> 877dca99a80b638ecb9a7a6905f178de21f129cf
 complex_coord operator+(const complex_coord& a, const complex_coord& b){
 	return complex_coord(a.re + b.re, a.im + b.im);
 }
