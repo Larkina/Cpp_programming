@@ -1,4 +1,4 @@
-#ifndef LIST
+﻿#ifndef LIST
 #define LIST
 
 #include <istream>
@@ -30,13 +30,12 @@ public:
 			return *it;
 		}
 	public:
-		iterator(): e(NULL), h(List<T>()){};
-		//~iterator();
+		iterator(): e(NULL), h(List<T>()){}; // да-да. конструктор на врмеенный элемент. замнем)
 		T operator*(){
 			if (e != h.pr)
 				return this->e->data;
 			else
-				return T(); // �� �� �� �����, ��� ����������
+				return T(); // Но мы то знаем, что исключение
 		}
 		iterator& operator++(){
 			if (this->e != this->h.pr)
@@ -61,7 +60,6 @@ public:
 		}
 	};
 
-	//friend class iterator;
 	List();
 	~List();
 
@@ -73,7 +71,8 @@ public:
 	void insert(iterator pos, const T& data = T(), int count = 1);
 	void push_back(const T& data);
 	void push_front(const T& data);
-
+	iterator erase(iterator it);
+	iterator erase(iterator first, iterator last);
 };
 
 template<typename T>
@@ -145,4 +144,31 @@ void List<T>::push_front(const T& data){
 	insert(it, data);
 }
 
+template<typename T>
+typename List<T>::iterator List<T>::erase(iterator it){
+	elem *l = NULL, *r = NULL;
+	l = it->e->prev;
+	r = it->e->next;
+	l->next = r;
+	r->prev = l;
+	free(it->e);
+	it->e = r;
+	it->h.i_size--;
+	return it;
+}
+
+template<typename T>
+typename List<T>::iterator List<T>::erase(iterator it, iterator last){
+	while(it != last){
+		elem *l = NULL, *r = NULL;
+		l = it->e->prev;
+		r = it->e->next;
+		l->next = r;
+		r->prev = l;
+		free(it->e);
+		it->e = r;
+		it->h.i_size--;
+	}
+	return it;
+}
 #endif
