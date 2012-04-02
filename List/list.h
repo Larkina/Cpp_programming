@@ -35,14 +35,14 @@ public:
 
 	public:
 		iterator(): e(NULL), h(List<T>()){}; // да-да. конструктор на врмеенный элемент. замнем)
-		/*iterator(const iterator& it): h(it.h){
-			e = new elem(it.e);
-		}*/
+		iterator(const iterator& it): h(it.h){
+			e = it.e;// и зачем это?
+		}
 		T operator*(){
-			if (e != h.pr)
+			if (e->data != NULL)
 				return *(this->e->data);
 			else
-				return T(); // Но мы то знаем, что исключение
+				return NULL; // Но мы то знаем, что исключение
 		}
 		iterator& operator++(){
 			if (this->e != this->h.pr)
@@ -74,7 +74,7 @@ public:
 			return *this;
 		}
 		bool operator==(const iterator& it){
-			return /*this->h == it.h && */it.e == this->e;
+			return it.e == e;
 		}
 		bool operator!=(const iterator& it){
 			return !(*this == it);
@@ -92,11 +92,12 @@ public:
 	bool empty() const;
 	
 	bool operator==(List<T>& t) const;
-	//List<T>& operator=(const List<T>& t);
 
 	void insert(iterator pos, const T& data = T(), int count = 1);
 	void push_back(const T& data);
 	void push_front(const T& data);
+	void pop_back();
+	void pop_front();
 	iterator erase(iterator it);
 	iterator erase(iterator first, iterator last);
 
@@ -180,11 +181,13 @@ void List<T>::push_front(const T& data){
 
 template<typename T>
 typename List<T>::iterator List<T>::erase(iterator iter){
-	return erase(iter, ++iter);
+	return erase(iter, ++(*(new iterator(iter))));
 }
 
 template<typename T>
 typename List<T>::iterator List<T>::erase(iterator first, iterator last){
+	if (first.h.empty())
+		return last;
 	iterator it = first;
 	while(it != last){
 		elem *l = NULL, *r = NULL;
@@ -204,7 +207,7 @@ bool List<T>::operator==(List<T>& arg) const{
 	if (arg.size() != i_size)
 		return 0;
 	iterator it1 = begin(), it2 = arg.begin();
-	while(it1 == it2){
+	while(it1!= end() && *it1 == *it2){
 		++it1;
 		++it2;
 	}
@@ -219,12 +222,14 @@ std::ostream& operator<<(std::ostream& s, List<T> l){
 	return s;
 }
 
-/*template<typename T>
-List<T>& List<T>::operator=(const List<T>& t){
-	erase(begin(), end());
-	for(iterator it = t.begin(); it != t.end(); ++it)
-		push_back(*it);
-	return *this;
-}*/
+template<typename T>
+void List<T>::pop_front(){
+	erase(begin());
+}
+
+template<typename T>
+void List<T>::pop_back(){
+	erase(--end());
+}
 
 #endif
