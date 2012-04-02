@@ -19,26 +19,27 @@ private:
 
 public:
 	class iterator{
-
-		List* h;
+		friend class List<T>;
+		List& h;
 		elem* e;
 
-		static iterator CreateIterator(List* h,  elem e){
-			iterator it = new iterator;
-			iter->e = e;
-			iter->h = h;
+		static iterator& CreateIterator(const List<T>& h, elem* e){
+			iterator* it = new iterator();
+			it->e = e;
+			it->h = h;
 			return *it;
 		}
 	public:
-		~iterator();
+		iterator(): e(NULL), h(List<T>()){};
+		//~iterator();
 		T operator*(){
-			if (e != h->pr)
-				return &(iter->e->data);
+			if (e != h.pr)
+				return this->e->data;
 		}
 		iterator& operator++(){
-			if (iter->e != iter->h->pr)
-				iter->e = iter->e->next;
-			return iter;	
+			if (this->e != this->h.pr)
+				this->e = this->e->next;
+			return *this;	
 		}
 		iterator& operator=(const iterator& it){
 			*this->h = it.h;
@@ -53,12 +54,17 @@ public:
 		}
 	};
 
+	//friend class iterator;
 	List();
 	~List();
 
 	iterator begin() const;
 	iterator end() const;
 	int size() const;
+	bool empty() const;
+
+	void insert(iterator pos, const T& data = T(), int count = 1);
+	void push_back(const T& data);
 
 };
 
@@ -75,12 +81,12 @@ List<T>::List(){
 
 template<typename T>
 typename List<T>::iterator List<T>::begin() const{
-	return CreateIterator(*this, this->bf->next);
+	return iterator::CreateIterator(*this, this->bf->next);
 }
 
 template<typename T>
 typename List<T>::iterator List<T>::end() const{
-	return CreateIterator(*this, this->pr->prev);
+	return iterator::CreateIterator(*this, this->pr);
 }
 
 template<typename T>
@@ -97,6 +103,31 @@ List<T>::~List(){
 template<typename T>
 int List<T>::size() const{
 	return i_size;	
+}
+
+template<typename T>
+bool List<T>::empty() const{
+	return i_size == 0;
+}
+
+template<typename T>
+void List<T>::insert(iterator it, const T& data = T(), int count = 1){
+	for(int i = 0; i < count; ++i){
+		elem *e = (elem*)malloc(sizeof(elem));
+		e->next = it.e;
+		e->prev = it.e->prev;
+		e->data = data;
+		it.e->prev->next = e;
+		it.e->prev = e;
+		it.e = e;
+		it.h.i_size++;	
+	}
+}
+
+template<typename T>
+void List<T>::push_back(const T& data){
+	iterator it = end();
+	insert(it, data);
 }
 
 #endif
