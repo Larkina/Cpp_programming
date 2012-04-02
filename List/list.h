@@ -33,6 +33,15 @@ public:
 		List& h;
 		elem* e;
 
+		void shift(int count){
+			for(int i = 0; i < count; ++i)
+				if (e->next != NULL)
+					(*this)++;
+			for(int i = 0; i > count; ++count)
+				if (e->prev != NULL)
+					(*this)--;
+		}
+
 	public:
 		iterator(): e(NULL), h(List<T>()){}; // да-да. конструктор на врмеенный элемент. замнем)
 		iterator(const iterator& it): h(it.h){
@@ -102,6 +111,8 @@ public:
 	iterator erase(iterator first, iterator last);
 	T& front();
 	T& back();
+	void clear();
+	void resize(int len, T val = T());
 	friend std::ostream& operator<<(std::ostream& s, const List<T>& l);
 };
 
@@ -241,6 +252,26 @@ T& List<T>::front(){
 template<typename T>
 T& List<T>::back(){
 	return *(pr->prev->data);
+}
+
+template<typename T>
+void List<T>::clear(){
+	erase(begin(), end());
+}
+
+template<typename T>
+void List<T>::resize(int len, T val = T()){
+	if (len == i_size)
+		return;
+	if (len < i_size){
+		iterator it = begin();
+		it.shift(i_size - len + 1);
+		erase(it, end());
+	}
+	else{
+		for(int i = i_size; i < len; ++i)
+			push_back(val);
+	}
 }
 
 #endif
