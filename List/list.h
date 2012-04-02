@@ -100,7 +100,8 @@ public:
 	void pop_front();
 	iterator erase(iterator it);
 	iterator erase(iterator first, iterator last);
-
+	T& front();
+	T& back();
 	friend std::ostream& operator<<(std::ostream& s, const List<T>& l);
 };
 
@@ -230,6 +231,16 @@ void List<T>::pop_front(){
 template<typename T>
 void List<T>::pop_back(){
 	erase(--end());
+}
+
+template<typename T>
+T& List<T>::front(){
+	return *(bf->next->data);
+}
+
+template<typename T>
+T& List<T>::back(){
+	return *(pr->prev->data);
 }
 
 #endif
