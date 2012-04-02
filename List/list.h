@@ -35,15 +35,22 @@ public:
 		T operator*(){
 			if (e != h.pr)
 				return this->e->data;
+			else
+				return T(); // Но мы то знаем, что исключение
 		}
 		iterator& operator++(){
 			if (this->e != this->h.pr)
 				this->e = this->e->next;
 			return *this;	
 		}
+		iterator& operator--(){
+			if (this->e != this->h.bf)
+				this->e = this->e->prev;
+			return *this;	
+		}
 		iterator& operator=(const iterator& it){
-			*this->h = it.h;
-			*this->e = it.e;
+			this->h = it.h;
+			this->e = it.e;
 			return *this;
 		}
 		bool operator==(const iterator& it){
@@ -65,6 +72,7 @@ public:
 
 	void insert(iterator pos, const T& data = T(), int count = 1);
 	void push_back(const T& data);
+	void push_front(const T& data);
 
 };
 
@@ -111,7 +119,8 @@ bool List<T>::empty() const{
 }
 
 template<typename T>
-void List<T>::insert(iterator it, const T& data = T(), int count = 1){
+void List<T>::insert(iterator iter, const T& data = T(), int count = 1){
+	iterator it = iter;
 	for(int i = 0; i < count; ++i){
 		elem *e = (elem*)malloc(sizeof(elem));
 		e->next = it.e;
@@ -127,6 +136,12 @@ void List<T>::insert(iterator it, const T& data = T(), int count = 1){
 template<typename T>
 void List<T>::push_back(const T& data){
 	iterator it = end();
+	insert(it, data);
+}
+
+template<typename T>
+void List<T>::push_front(const T& data){
+	iterator it = begin();
 	insert(it, data);
 }
 
