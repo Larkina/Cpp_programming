@@ -62,5 +62,44 @@ int main(){
 		it = l.begin();
 		test((*(it++)).compare("cadabra"), 0);
 	}
+	{
+		List<int> a, b;
+		for(int i = 0; i < 3; ++i){
+			a.push_back(i);
+			b.push_back(i);
+		}
+		test(a == b, true);
+		a.pop_front();
+		List<int>::iterator it = a.begin();
+		test(*it, 1);
+		a.pop_back();
+		test(a.size(), 1);
+		a.push_back(65);
+		a.front() += a.back();
+		test(*it, 66);
+		b.clear();
+		test(b.size(), 0);
+	}
+	{
+	  List<int> l;
+	  for (int i = 1; i<10;++i ) 
+		 l.push_back(i);
+	  l.resize(5);
+	  test(l.size(), 5);
+	  for(int i = 1; i < 6; ++i){
+		  test(l.front(), i);
+		  l.pop_front();
+	  }
+	  l.resize(3, 100);
+	  for(int i = 0; i < 3; ++i){
+		  test(l.back(), 100);
+		  l.pop_back();
+	  }
+	  l.resize(12);
+  	  for(int i = 0; i < 12; ++i){
+		  test(l.back(), 0);
+		  l.pop_back();
+	  }
+	}
 	print_result();
 }
