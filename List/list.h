@@ -20,7 +20,7 @@ private:
 		elem(elem* t){
 			next = t->next;
 			prev = t->prev;
-			data = new T(*t->data);
+			data = t->data == NULL ? NULL : new T(*t->data);
 		}
 	};
 
@@ -51,7 +51,7 @@ public:
 		}
 		iterator& operator++(int){
 			iterator *tmp = new iterator();
-			tmp = this;
+			tmp->e = new elem(this->e);
 			if (this->e != this->h.pr)
 				this->e = this->e->next;
 			return *tmp;
@@ -63,7 +63,7 @@ public:
 		}
 		iterator& operator--(int){
 			iterator *tmp = new iterator();
-			tmp = this;
+			tmp->e = new elem(this->e);
 			if (this->e != this->h.bf)
 				this->e = this->e->prev;
 			return *tmp;	
