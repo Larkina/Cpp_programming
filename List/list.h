@@ -1,4 +1,4 @@
-Ôªø#ifndef LIST
+#ifndef LIST
 #define LIST
 
 #include <istream>
@@ -10,8 +10,18 @@ class List{
 private:
 	class elem{
 		friend class List<T>;
-		T data;
+		T* data;
 		elem *next, *prev;
+		elem(){
+			next = NULL;
+			prev = NULL;
+			data = NULL;
+		}
+		elem(elem* t){
+			next = t->next;
+			prev = t->prev;
+			data = new T(*t->data);
+		}
 	};
 
 	int i_size;
@@ -23,29 +33,40 @@ public:
 		List& h;
 		elem* e;
 
-		static iterator& CreateIterator(const List<T>& h, elem* e){
-			iterator* it = new iterator();
-			it->e = e;
-			it->h = h;
-			return *it;
-		}
 	public:
-		iterator(): e(NULL), h(List<T>()){}; // –¥–∞-–¥–∞. –∫–æ–Ω—Å—Ç—Ä—É–∫—Ç–æ—Ä –Ω–∞ –≤—Ä–º–µ–µ–Ω–Ω—ã–π —ç–ª–µ–º–µ–Ω—Ç. –∑–∞–º–Ω–µ–º)
+		iterator(): e(NULL), h(List<T>()){}; // ‰‡-‰‡. ÍÓÌÒÚÛÍÚÓ Ì‡ ‚ÏÂÂÌÌ˚È ˝ÎÂÏÂÌÚ. Á‡ÏÌÂÏ)
+		/*iterator(const iterator& it): h(it.h){
+			e = new elem(it.e);
+		}*/
 		T operator*(){
 			if (e != h.pr)
-				return this->e->data;
+				return *(this->e->data);
 			else
-				return T(); // –ù–æ –º—ã —Ç–æ –∑–Ω–∞–µ–º, —á—Ç–æ –∏—Å–∫–ª—é—á–µ–Ω–∏–µ
+				return T(); // ÕÓ Ï˚ ÚÓ ÁÌ‡ÂÏ, ˜ÚÓ ËÒÍÎ˛˜ÂÌËÂ
 		}
 		iterator& operator++(){
 			if (this->e != this->h.pr)
 				this->e = this->e->next;
 			return *this;	
 		}
+		iterator& operator++(int){
+			iterator *tmp = new iterator();
+			tmp = this;
+			if (this->e != this->h.pr)
+				this->e = this->e->next;
+			return *tmp;
+		}
 		iterator& operator--(){
 			if (this->e != this->h.bf)
 				this->e = this->e->prev;
 			return *this;	
+		}
+		iterator& operator--(int){
+			iterator *tmp = new iterator();
+			tmp = this;
+			if (this->e != this->h.bf)
+				this->e = this->e->prev;
+			return *tmp;	
 		}
 		iterator& operator=(const iterator& it){
 			this->h = it.h;
@@ -53,7 +74,7 @@ public:
 			return *this;
 		}
 		bool operator==(const iterator& it){
-			return *this->h == it.h && it.e == *this->e;
+			return /*this->h == it.h && */it.e == this->e;
 		}
 		bool operator!=(const iterator& it){
 			return !(*this == it);
@@ -62,17 +83,24 @@ public:
 
 	List();
 	~List();
+	
+	friend class iterator;
 
 	iterator begin() const;
 	iterator end() const;
 	int size() const;
 	bool empty() const;
+	
+	bool operator==(List<T>& t) const;
+	//List<T>& operator=(const List<T>& t);
 
 	void insert(iterator pos, const T& data = T(), int count = 1);
 	void push_back(const T& data);
 	void push_front(const T& data);
 	iterator erase(iterator it);
 	iterator erase(iterator first, iterator last);
+
+	friend std::ostream& operator<<(std::ostream& s, const List<T>& l);
 };
 
 template<typename T>
@@ -88,12 +116,18 @@ List<T>::List(){
 
 template<typename T>
 typename List<T>::iterator List<T>::begin() const{
-	return iterator::CreateIterator(*this, this->bf->next);
+	iterator *it = new iterator();
+	it->e = this->bf->next;
+	it->h = *this;
+	return *it;
 }
 
 template<typename T>
 typename List<T>::iterator List<T>::end() const{
-	return iterator::CreateIterator(*this, this->pr);
+	iterator *it = new iterator();
+	it->e = this->pr;
+	it->h = *this;
+	return *it;	
 }
 
 template<typename T>
@@ -124,11 +158,11 @@ void List<T>::insert(iterator iter, const T& data = T(), int count = 1){
 		elem *e = (elem*)malloc(sizeof(elem));
 		e->next = it.e;
 		e->prev = it.e->prev;
-		e->data = data;
+		e->data = new T(data);
 		it.e->prev->next = e;
 		it.e->prev = e;
 		it.e = e;
-		it.h.i_size++;	
+		i_size++;
 	}
 }
 
@@ -145,30 +179,52 @@ void List<T>::push_front(const T& data){
 }
 
 template<typename T>
-typename List<T>::iterator List<T>::erase(iterator it){
-	elem *l = NULL, *r = NULL;
-	l = it->e->prev;
-	r = it->e->next;
-	l->next = r;
-	r->prev = l;
-	free(it->e);
-	it->e = r;
-	it->h.i_size--;
+typename List<T>::iterator List<T>::erase(iterator iter){
+	return erase(iter, ++iter);
+}
+
+template<typename T>
+typename List<T>::iterator List<T>::erase(iterator first, iterator last){
+	iterator it = first;
+	while(it != last){
+		elem *l = NULL, *r = NULL;
+		l = it.e->prev;
+		r = it.e->next;
+		l->next = r;
+		r->prev = l;
+		free(it.e);
+		it.e = r;
+		i_size--;
+	}
 	return it;
 }
 
 template<typename T>
-typename List<T>::iterator List<T>::erase(iterator it, iterator last){
-	while(it != last){
-		elem *l = NULL, *r = NULL;
-		l = it->e->prev;
-		r = it->e->next;
-		l->next = r;
-		r->prev = l;
-		free(it->e);
-		it->e = r;
-		it->h.i_size--;
+bool List<T>::operator==(List<T>& arg) const{
+	if (arg.size() != i_size)
+		return 0;
+	iterator it1 = begin(), it2 = arg.begin();
+	while(it1 == it2){
+		++it1;
+		++it2;
 	}
-	return it;
+	return it1 == end();
 }
+
+template<typename T> // wtf?
+std::ostream& operator<<(std::ostream& s, List<T> l){
+	for(List<int>::iterator i = l.begin(); i != l.end(); ++i)
+		s << *i << " ";
+	s << endl;	
+	return s;
+}
+
+/*template<typename T>
+List<T>& List<T>::operator=(const List<T>& t){
+	erase(begin(), end());
+	for(iterator it = t.begin(); it != t.end(); ++it)
+		push_back(*it);
+	return *this;
+}*/
+
 #endif
