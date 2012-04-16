@@ -1,8 +1,6 @@
 #ifndef STRING
 #define STRING
 
-#include <istream>
-#include <ostream>
 #include <iostream>
 #include <algorithm>
 
@@ -14,10 +12,6 @@ class String {
 		int len;
 		
 		Buffer(): link_count(0), len(0){};
-		void check_link(){
-			if (link_count == 0)
-				free(str);
-		}
 	};
 
 	class proxy_char{
@@ -26,20 +20,21 @@ class String {
 	public:
 		proxy_char(int i, String& s): idx(i), parent(s){};
 		proxy_char& operator=(char* t){
-			if(--parent.buff->link_count){
-				char* new_value = (char*)malloc(sizeof(char) * (parent.length() + 1));
-				strcpy(new_value, parent.buff->str);
-				parent.buff = new Buffer();
-				parent.buff->str = new_value;
-				parent.buff->len = strlen(new_value);
-			}
-			parent.buff->link_count = 1;
+			parent.dec_link();
 			int l = strlen(t) > parent.length() + 1? parent.length() + 1 : strlen(t);
 			parent = parent.substr(0, idx) + t + parent.substr(idx + l, parent.length() - l + 1);
 			return *this;
 		}
 		operator char(){
 			return parent.buff->str[idx];
+		}
+		proxy_char& operator=(char t){
+			parent.dec_link();
+			char* tmp = (char*)malloc(sizeof(char) *(parent.length() + 1));
+			strcpy(tmp, parent.buff->str);
+			tmp[0] = t;
+			parent = tmp;
+			return *this;
 		}
 	};
 	
@@ -61,6 +56,19 @@ public:
 		return buff->link_count;
 	}
 
+	void dec_link(){
+		if(--buff->link_count){
+			Buffer* t = new Buffer();
+			char* new_value = (char*)malloc(sizeof(char) * (buff->len + 1));
+			strcpy(new_value, buff->str);
+			t->str = new_value;
+			t->len = strlen(new_value);
+			t->link_count = 1;
+			buff = t;
+		}		
+		buff->link_count = 1;
+	}
+
 	bool operator==( const String& s);
 	bool operator!=( const String& s);
 	bool operator<(const String& s);
@@ -73,7 +81,7 @@ public:
 	void insert(char* s, int idx);
 	void delete_substr(int idx, int len);
 
-	friend String operator+(const String& a, const String& b);
+	friend String operator+(String& a, const String& b);
 	friend String& operator+=(String& a, const String& b);
 
 	friend std::ostream& operator<<(std::ostream&, const String&);

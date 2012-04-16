@@ -15,8 +15,7 @@ String::String(const char *s){
 }
 
 String::~String(){
-	buff->link_count--;
-	//buff->check_link();
+	dec_link();
 }
 
 String::String(const String &s){
@@ -33,8 +32,7 @@ int String::length() const{
 }
 
 String& String::operator=(const String &s){
-	buff->link_count--;
-	buff->check_link();
+	dec_link();
 	buff = s.buff;
 	buff->link_count++;
 	return *this;
@@ -64,7 +62,7 @@ bool String::operator>=(const String& s){
 	return buff->len == s.length() ? strcmp(buff->str, s.c_str()) >= 0 : buff->len > s.length();
 }
 
-String operator+(const String& a, const String& b){
+String operator+(String& a, const String& b){
 	char* t = (char*)malloc(sizeof(char) *(a.length() + b.length() + 1));
 	memcpy(t, a.c_str(),  sizeof(char) * (a.length() + 1));
 	strcat(t, b.c_str());	
@@ -74,7 +72,9 @@ String operator+(const String& a, const String& b){
 }
 
 String& operator+=(String& a, const String& b){
-	return a = a + b;
+	a.dec_link();
+	a = a + b;
+	return a;
 }
 
  String::proxy_char String::operator[](int idx){
@@ -91,6 +91,7 @@ String String::substr(int idx, int len) const{
 }
 
 void String::insert(char* s, int idx){
+	dec_link();
 	char* t = (char*)malloc(sizeof(char) * (length() - idx + 1));
 	strncpy(t, buff->str + idx + 1, sizeof(char) * (length() - idx + 1));
 	buff->str = (char*)realloc(buff->str, sizeof(char) * (strlen(s) + buff->len + 1)); 
@@ -101,6 +102,7 @@ void String::insert(char* s, int idx){
 }
 
 void String::delete_substr(int idx, int len){
+	dec_link();
 	char* t = (char*)malloc(sizeof(char) * (length() - len + 1));
 	strncpy(t, buff->str + idx + len, sizeof(char) * (length()- len + 1));
 	buff->str = (char*)realloc(buff->str, sizeof(char) * (idx + 1)); 
