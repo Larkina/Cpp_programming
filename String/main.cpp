@@ -78,6 +78,33 @@ int main(){
 			char d = String("Fascinating")[2];
 			test(d, 's');
 		}
+		// = char
+		{
+			String d = "Test";
+			d[0] = 'R';
+			test(strcmp(d.c_str(), "Rest"), 0);
+		}
+		{
+			String d = "Past ", b = "Rear";
+			String c = d, f = d;
+			d = d + b;
+			test(f.get_link_count(), 2);
+			test(d.get_link_count(), 1);
+		}
+		{
+			String d = "Before";
+			String c = d, f = d, j = d;
+			d.insert(" First", 5);
+			test(c.get_link_count(), 3);
+			test(d.get_link_count(), 1);
+		}
+		{
+			String d = "Misheard";
+			String c = d, f = d, j = d;
+			d.delete_substr(4, 5);
+			test(c.get_link_count(), 3);
+			test(d.get_link_count(), 1);
+		}
 	}
 	// Старые
 
@@ -107,7 +134,7 @@ int main(){
 	r += "lol";
 	test(strcmp(r.c_str(), "Ababacalol"), 0);
 	test(strcmp((g + "cmp").c_str(), "xyzcmp"), 0);
-	String tmp = "T_T" + String(" >_<");
+	String tmp = String("T_T") + String(" >_<");
 	test(strcmp(tmp.c_str(), "T_T >_<"), 0);
 
 	// [], substr
