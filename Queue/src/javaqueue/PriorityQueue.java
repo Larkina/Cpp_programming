@@ -1,10 +1,13 @@
 package javaqueue;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 
 public class PriorityQueue<T> {
 
+    //public class OutOfArrayIterator extends Exception {}
+    
     private static final int DEFAULT_CAPACITY = 11;
     private Object[] h;
     private int heap_size;
@@ -49,6 +52,13 @@ public class PriorityQueue<T> {
             this(DEFAULT_CAPACITY, null);
     }
 
+    public PriorityQueue(PriorityQueue<T> pq){
+        this.comp = pq.comparator();
+        h = new Object[pq.size()];
+        while (pq.size() != 0)
+            add(pq.poll());
+    }
+    
     private void swap(int i, int j, Object[] arr) {
         Object t = arr[i];
         arr[i] = arr[j];
@@ -150,30 +160,38 @@ public class PriorityQueue<T> {
     }
 	
     public boolean contains(Object o){
-        for(int i = 1; i < heap_size; ++i)
-            if (o.equals(h[i]))
-                return true;
-        return false;
+        return indexOf(o) != -1;
     }
 	
     public Comparator<T> comparator(){
         return comp;
     }
-	
+    
+    public int indexOf(Object o){
+        for(int i = 0; i < heap_size; ++i)
+            if (o.equals(h[i]))
+                return i;
+        return -1;
+    }
+    
     public boolean remove(Object o){
-        for(int i = 1; i < heap_size; ++i)
-            if (o.equals(h[i])){
-                delete(i);
-                return true;
-            }
+        int idx = indexOf(o);
+        if (idx == -1)
+            return false;
+        delete(idx);
         return false;
     }
 	
     public void clear(){
+        for(int i = 0; i < h.length; ++i)
+            h[i] = 0;
         heap_size = 0;
-        h = new Object[1];
     }
 	
+    public Object[] toArray(){
+        return Arrays.copyOf(h, heap_size);
+    }
+    
     public Iterator<T> iterator(){
         return new Iter(1, this);
     }

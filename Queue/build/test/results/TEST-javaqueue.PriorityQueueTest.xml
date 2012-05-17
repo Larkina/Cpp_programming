@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Aspire" name="javaqueue.PriorityQueueTest" tests="10" time="1.96" timestamp="2012-05-17T13:15:03">
+<testsuite errors="0" failures="0" hostname="Aspire" name="javaqueue.PriorityQueueTest" tests="10" time="0.117" timestamp="2012-05-17T20:45:19">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="RU" />
@@ -14,7 +14,7 @@
     <property name="javadoc.windowtitle" value="" />
     <property name="libs.toplink.classpath" value="/home/larkina/netbeans-7.1.2/java/modules/ext/toplink/toplink-essentials.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/toplink/toplink-essentials-agent.jar" />
     <property name="libs.jsp-compilation.javadoc" value="" />
-    <property name="user.dir" value="/media/2994-4A80/Queue" />
+    <property name="user.dir" value="/home/larkina/projects/Cpp_programming/Queue" />
     <property name="libs.hibernate-persistence.javadoc" value="" />
     <property name="libs.JMUnit4CLDC10.javadoc" value="/home/larkina/netbeans-7.1.2/mobility/modules/docs/jmunit-1.2.1-api.zip" />
     <property name="java.vm.version" value="21.0-b17" />
@@ -63,7 +63,7 @@
     <property name="copylibs.rebase" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner javaqueue.PriorityQueueTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/media/2994-4A80/Queue/build/test/results/TEST-javaqueue.PriorityQueueTest.xml crashfile=/media/2994-4A80/Queue/build/junitvmwatcher6052655665265888833.properties propsfile=/media/2994-4A80/Queue/build/junit5705723114297542829.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner javaqueue.PriorityQueueTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/larkina/projects/Cpp_programming/Queue/build/test/results/TEST-javaqueue.PriorityQueueTest.xml crashfile=/home/larkina/projects/Cpp_programming/Queue/build/junitvmwatcher4912867081651955637.properties propsfile=/home/larkina/projects/Cpp_programming/Queue/build/junit5881174575194835632.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -124,7 +124,6 @@
     <property name="libs.junit.classpath" value="/home/larkina/netbeans-7.1.2/java/modules/ext/junit-3.8.2.jar" />
     <property name="libs.jaxb.javadoc" value="/home/larkina/netbeans-7.1.2/ide/docs/jaxb-api-doc.zip" />
     <property name="libs.struts.classpath" value="/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/antlr-2.7.2.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/bsf-2.3.0.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-beanutils-1.8.0.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-chain-1.2.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-digester-1.8.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-fileupload-1.1.1.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-io-1.1.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-logging-1.0.4.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/commons-validator-1.3.1.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/jstl-1.0.2.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/oro-2.0.8.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/standard-1.0.6.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-core-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-el-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-extras-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-faces-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-mailreader-dao-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-scripting-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-taglib-1.3.10.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/struts/struts-tiles-1.3.10.jar" />
-    <property name="org.openide.awt.SwingBrowserImpl.do-not-block-awt" value="false" />
     <property name="ant.home" value="/home/larkina/netbeans-7.1.2/java/ant" />
     <property name="libs.junit_4.src" value="/home/larkina/netbeans-7.1.2/java/docs/junit-4.10-sources.jar" />
     <property name="libs.absolutelayout.maven-pom" value="" />
@@ -134,9 +133,9 @@
     <property name="libs.metro.maven-pom" value="" />
     <property name="java.util.logging.config.class" value="org.netbeans.core.startup.TopLogging" />
     <property name="libs.PostgreSQLDriver.src" value="" />
-    <property name="ant.file.Queue-impl" value="/media/2994-4A80/Queue/nbproject/build-impl.xml" />
+    <property name="ant.file.Queue-impl" value="/home/larkina/projects/Cpp_programming/Queue/nbproject/build-impl.xml" />
     <property name="sun.arch.data.model" value="64" />
-    <property name="basedir" value="/media/2994-4A80/Queue" />
+    <property name="basedir" value="/home/larkina/projects/Cpp_programming/Queue" />
     <property name="jar.compress" value="false" />
     <property name="libs.NetBeans MIDP Components PDA.src" value="/home/larkina/netbeans-7.1.2/mobility/sources/netbeans_midp_components_pda-src.zip" />
     <property name="libs.jstl11.classpath" value="/home/larkina/netbeans-7.1.2/enterprise/modules/ext/standard.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jstl.jar" />
@@ -150,7 +149,7 @@
     <property name="compile.on.save" value="true" />
     <property name="apple.awt.graphics.UseQuartz" value="true" />
     <property name="user.language" value="ru" />
-    <property name="ant.file.Queue" value="/media/2994-4A80/Queue/build.xml" />
+    <property name="ant.file.Queue" value="/home/larkina/projects/Cpp_programming/Queue/build.xml" />
     <property name="libs.JAXB-ENDORSED.maven-pom" value="" />
     <property name="libs.spring-framework.classpath" value="/home/larkina/netbeans-7.1.2/ide/modules/org-apache-commons-logging.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/cglib-2.2.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring/spring-2.5.6.SEC03.jar" />
     <property name="libs.eclipselink.maven-pom" value="" />
@@ -179,7 +178,7 @@
     <property name="libs.JWSAntTasks.classpath" value="/home/larkina/netbeans-7.1.2/java/ant/extra/org-netbeans-modules-javawebstart-anttasks.jar" />
     <property name="libs.spring-framework300.src" value="" />
     <property name="libs.ant-contrib.classpath" value="/home/larkina/netbeans-7.1.2/mobility/modules/ext/ant-contrib-1.0b3.jar" />
-    <property name="empty.dir" value="/media/2994-4A80/Queue/build/empty" />
+    <property name="empty.dir" value="/home/larkina/projects/Cpp_programming/Queue/build/empty" />
     <property name="version-output" value="java version &quot;1.7" />
     <property name="javadoc.preview" value="true" />
     <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre" />
@@ -227,7 +226,7 @@
     <property name="javac.processorpath" value="" />
     <property name="libs.spring-webmvc.classpath" value="/home/larkina/netbeans-7.1.2/enterprise/modules/ext/spring/spring-webmvc-2.5.6.SEC03.jar" />
     <property name="javac.compilerargs" value="" />
-    <property name="ant.file" value="/media/2994-4A80/Queue/build.xml" />
+    <property name="ant.file" value="/home/larkina/projects/Cpp_programming/Queue/build.xml" />
     <property name="libs.beans-binding.maven-pom" value="" />
     <property name="libs.jsf12.classpath" value="/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-1_2/commons-beanutils.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-1_2/commons-collections.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-1_2/commons-digester.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-1_2/commons-logging.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-1_2/jsf-api.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-1_2/jsf-impl.jar" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -243,7 +242,7 @@
     <property name="javadoc.additionalparam" value="" />
     <property name="java.io.tmpdir" value="/tmp" />
     <property name="java.vendor.url" value="http://java.oracle.com/" />
-    <property name="endorsed.classpath.cmd.line.arg" value="-Xbootclasspath/p:&apos;/media/2994-4A80/Queue/${endorsed.classpath}&apos;" />
+    <property name="endorsed.classpath.cmd.line.arg" value="-Xbootclasspath/p:&apos;/home/larkina/projects/Cpp_programming/Queue/${endorsed.classpath}&apos;" />
     <property name="libs.jsp-compiler.src" value="" />
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64" />
     <property name="have.sources" value="true" />
@@ -256,7 +255,6 @@
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="libs.DataBindingME-SVG.src" value="/home/larkina/netbeans-7.1.2/mobility/sources/netbeans_databindingme_svg-src.zip" />
     <property name="dist.jar" value="dist/Queue.jar" />
-    <property name="netbeans.automatic.build" value="true" />
     <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
     <property name="ant.project.name" value="Queue" />
     <property name="netbeans.hash.code" value="unique=NB_CND_GFMOD_GROOVY_JAVA_MOB_PHP_WEBEE091ffb631-6c5f-4bf6-8348-2606005b1986_b43f0434-4d93-425b-88a5-2a95390e785f" />
@@ -289,8 +287,8 @@
     <property name="libs.javac-api.classpath" value="/home/larkina/netbeans-7.1.2/java/modules/ext/javac-api-nb-7.0-b07.jar" />
     <property name="libs.nokiaS80-ant-utils.classpath" value="/home/larkina/netbeans-7.1.2/mobility/modules/ext/org-netbeans-modules-j2me-cdc-project-nokiaS80.jar" />
     <property name="java.version" value="1.7.0_147-icedtea" />
-    <property name="javadoc.version" value="false" />
     <property name="libs.NetBeans MIDP Components WMA.javadoc" value="/home/larkina/netbeans-7.1.2/mobility/modules/docs/netbeans_midp_components_wma-api.zip" />
+    <property name="javadoc.version" value="false" />
     <property name="libs.MySQLDriver.javadoc" value="" />
     <property name="org.openide.version" value="deprecated" />
     <property name="source.encoding" value="UTF-8" />
@@ -304,20 +302,20 @@
     <property name="netbeans.home+have.tests" value="true" />
     <property name="annotation.processing.processor.options" value="" />
     <property name="libs.jaxb.src" value="" />
-    <property name="work.dir" value="/media/2994-4A80/Queue" />
     <property name="libs.cdc-ant-utils.src" value="" />
+    <property name="work.dir" value="/home/larkina/projects/Cpp_programming/Queue" />
     <property name="libs.jaxb.classpath" value="/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/jaxb-impl.jar:/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/jaxb-xjc.jar:/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/jaxb1-impl.jar:/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/activation.jar:/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/api/jaxb-api.jar:/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/api/jsr173_api.jar" />
     <property name="do.depend" value="false" />
     <property name="dist.javadoc.dir" value="dist/javadoc" />
-    <property name="libs.spring-webmvc3.0.classpath" value="/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-webmvc-3.0.6.RELEASE.jar" />
     <property name="libs.swing-layout.classpath" value="/home/larkina/netbeans-7.1.2/platform/modules/ext/swing-layout-1.0.4.jar" />
+    <property name="libs.spring-webmvc3.0.classpath" value="/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-webmvc-3.0.6.RELEASE.jar" />
     <property name="libs.restlib.src" value="" />
     <property name="javac.source" value="1.7" />
     <property name="build.generated.dir" value="build/generated" />
-    <property name="libs.hibernate-persistence.src" value="" />
     <property name="line.separator" value="&#xa;" />
-    <property name="java.specification.version" value="1.7" />
+    <property name="libs.hibernate-persistence.src" value="" />
     <property name="libs.nb_svg_midp_components.javadoc" value="/home/larkina/netbeans-7.1.2/mobility/modules/docs/nb_svg_midp_components-api.zip" />
+    <property name="java.specification.version" value="1.7" />
     <property name="java.vm.info" value="mixed mode" />
     <property name="libs.jaxws21.maven-pom" value="" />
     <property name="libs.cdc-ant-utils.javadoc" value="" />
@@ -325,9 +323,9 @@
     <property name="ant.file.type.Queue" value="file" />
     <property name="libs.ojec-ant-utils.classpath" value="/home/larkina/netbeans-7.1.2/mobility/modules/ext/org-netbeans-modules-j2me-cdc-project-ojec.jar" />
     <property name="libs.spring-framework.maven-pom" value="" />
-    <property name="sun.boot.class.path" value="/media/2994-4A80/Queue/${endorsed.classpath}:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/netx.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/plugin.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes" />
+    <property name="sun.boot.class.path" value="/home/larkina/projects/Cpp_programming/Queue/${endorsed.classpath}:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/netx.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/plugin.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes" />
     <property name="javac.target" value="1.7" />
-    <property name="built-jar.properties" value="/media/2994-4A80/Queue/build/built-jar.properties" />
+    <property name="built-jar.properties" value="/home/larkina/projects/Cpp_programming/Queue/build/built-jar.properties" />
     <property name="build.test.classes.dir" value="build/test/classes" />
     <property name="src.dir" value="src" />
     <property name="annotation.processing.enabled" value="true" />
@@ -350,12 +348,12 @@
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
     <property name="default.javac.source" value="1.7" />
     <property name="debug-transport-by-os" value="dt_socket" />
-    <property name="libs.MySQLDriver.src" value="" />
     <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="libs.MySQLDriver.src" value="" />
     <property name="libs.ant-contrib.maven-pom" value="" />
     <property name="libs.nokiadeployment.javadoc" value="" />
-    <property name="java.runtime.version" value="1.7.0_147-icedtea-b147" />
     <property name="build.test.results.dir" value="build/test/results" />
+    <property name="java.runtime.version" value="1.7.0_147-icedtea-b147" />
     <property name="libs.ejb3-persistence.javadoc" value="" />
     <property name="libs.NetBeans MIDP Components.src" value="/home/larkina/netbeans-7.1.2/mobility/sources/netbeans_midp_components_basic-src.zip" />
     <property name="jna.platform.library.path" value="/lib64" />
@@ -377,24 +375,24 @@
     <property name="libs.metro.classpath" value="/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/activation.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/metro/webservices-api.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/metro/webservices-extra-api.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/metro/webservices-extra.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/metro/webservices-rt.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/metro/webservices-tools.jar" />
     <property name="libs.restlib.maven-pom" value="" />
     <property name="libs.DataBindingME.javadoc" value="/home/larkina/netbeans-7.1.2/mobility/modules/docs/netbeans_databindingme-api.zip" />
-    <property name="java.class.path" value="/media/2994-4A80/Queue/build/classes:/home/larkina/netbeans-7.1.2/platform/modules/ext/junit-4.10.jar:/media/2994-4A80/Queue/build/test/classes:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-launcher.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-junit.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-junit4.jar" />
     <property name="apple.laf.useScreenMenuBar" value="true" />
+    <property name="java.class.path" value="/home/larkina/projects/Cpp_programming/Queue/build/classes:/home/larkina/netbeans-7.1.2/platform/modules/ext/junit-4.10.jar:/home/larkina/projects/Cpp_programming/Queue/build/test/classes:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-launcher.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-junit.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-junit4.jar" />
     <property name="libs.absolutelayout.src" value="" />
     <property name="libs.cdc-pp-awt-layout.maven-pom" value="" />
     <property name="os.version" value="3.0.0-19-generic" />
     <property name="application.args" value="" />
-    <property name="libs.JMUnit4CLDC11.maven-pom" value="" />
     <property name="main.class.available" value="true" />
     <property name="sun.awt.enableExtraMouseButtons" value="true" />
+    <property name="libs.JMUnit4CLDC11.maven-pom" value="" />
     <property name="libs.toplink.javadoc" value="" />
     <property name="sun.desktop" value="gnome" />
     <property name="libs.nb_svg_midp_components.maven-pom" value="" />
-    <property name="libs.NetBeans MIDP Components PDA.maven-pom" value="" />
     <property name="libs.restlib.javadoc" value="/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-apache-client-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-atom-abdera-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-guice-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-multipart-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-simple-server-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/jersey-spring-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/oauth-client-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/oauth-server-1.8-javadoc.zip:/home/larkina/netbeans-7.1.2/enterprise/docs/oauth-signature-1.8-javadoc.zip" />
+    <property name="libs.NetBeans MIDP Components PDA.maven-pom" value="" />
     <property name="libs.JAXB-ENDORSED.classpath" value="/home/larkina/netbeans-7.1.2/ide/modules/ext/jaxb/api/jaxb-api.jar" />
     <property name="libs.eclipselink.classpath" value="/home/larkina/netbeans-7.1.2/java/modules/ext/eclipselink/eclipselink-2.3.0.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/eclipselink/javax.persistence-2.0.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/eclipselink/org.eclipse.persistence.jpa.jpql_1.0.0.jar" />
-    <property name="libs.beans-binding.javadoc" value="/home/larkina/netbeans-7.1.2/java/docs/beansbinding-1.2.1-doc.zip" />
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="libs.beans-binding.javadoc" value="/home/larkina/netbeans-7.1.2/java/docs/beansbinding-1.2.1-doc.zip" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="libs.CopyLibs.classpath" value="/home/larkina/netbeans-7.1.2/java/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar" />
     <property name="libs.spring-framework300.classpath" value="/home/larkina/netbeans-7.1.2/ide/modules/org-apache-commons-logging.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/cglib-2.2.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-aop-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-asm-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-aspects-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-beans-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-context-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-context-support-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-core-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-expression-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-instrument-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-instrument-tomcat-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-jdbc-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-jms-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-orm-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-oxm-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-test-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-tx-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-web-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-webmvc-portlet-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-webmvc-3.0.6.RELEASE.jar:/home/larkina/netbeans-7.1.2/java/modules/ext/spring-3.0/spring-struts-3.0.6.RELEASE.jar" />
@@ -410,8 +408,8 @@
     <property name="libs.junit.src" value="" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
     <property name="main.class" value="javaqueue.MainTest" />
-    <property name="build.dir" value="build" />
     <property name="libs.CopyLibs.src" value="" />
+    <property name="build.dir" value="build" />
     <property name="libs.jsp-compilation.classpath" value="/home/larkina/netbeans-7.1.2/java/ant/lib/ant.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/servlet3.0-jsp2.2-api.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/glassfish-jspparser-3.0.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jsf-2_1/jsf-api.jar:/home/larkina/netbeans-7.1.2/enterprise/modules/ext/jstl.jar:/home/larkina/netbeans-7.1.2/java/ant/lib/ant-launcher.jar" />
     <property name="ant.version" value="Apache Ant(TM) version 1.8.3 compiled on February 26 2012" />
     <property name="file.encoding" value="UTF-8" />
@@ -421,25 +419,25 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
   </properties>
-  <testcase classname="javaqueue.PriorityQueueTest" name="testAdd" time="0.005" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testSize" time="0.003" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testContains" time="0.001" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testRemove" time="0.001" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testClear" time="0.005" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testIterator" time="0.002" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testAdd" time="0.001" />
   <testcase classname="javaqueue.PriorityQueueTest" name="testPeek" time="0.001" />
   <testcase classname="javaqueue.PriorityQueueTest" name="testPoll" time="0.002" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testDelete" time="0.001" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testOffer" time="0.002" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testSize" time="0.001" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testContains" time="0.0" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testRemove" time="0.001" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testClear" time="0.009" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testIterator" time="0.002" />
-  <system-out><![CDATA[add
-peek
-delete
-offer
-size
+  <testcase classname="javaqueue.PriorityQueueTest" name="testDelete" time="0.0" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testOffer" time="0.001" />
+  <system-out><![CDATA[size
 contains
 remove
 clear
 iterator
+add
+peek
+delete
+offer
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
