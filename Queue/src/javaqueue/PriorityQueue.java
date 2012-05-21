@@ -5,8 +5,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 public class PriorityQueue<T> {
-
-    //public class OutOfArrayIterator extends Exception {}
     
     private static final int DEFAULT_CAPACITY = 11;
     private Object[] h;
@@ -126,10 +124,15 @@ public class PriorityQueue<T> {
     public void add(T x) {
         heap_size++;
         if (heap_size >= h.length) {
-            Object[] tmp = new Object[h.length];
-            System.arraycopy(h, 0, tmp, 0, h.length);
-            h = new Object[2 * heap_size + 1];
-            System.arraycopy(tmp, 0, h, 0, tmp.length);
+            try{
+                Object[] tmp = new Object[h.length];
+                System.arraycopy(h, 0, tmp, 0, h.length);
+                h = new Object[2 * heap_size + 1];
+                System.arraycopy(tmp, 0, h, 0, tmp.length);
+            }
+            catch(OutOfMemoryError e) {
+                System.out.println(e.getMessage());
+            }
         }
         h[heap_size] = x;
         siftup(heap_size);

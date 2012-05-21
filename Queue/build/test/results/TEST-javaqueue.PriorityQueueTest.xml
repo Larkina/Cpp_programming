@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Aspire" name="javaqueue.PriorityQueueTest" tests="10" time="0.117" timestamp="2012-05-17T20:45:19">
+<testsuite errors="0" failures="0" hostname="Aspire" name="javaqueue.PriorityQueueTest" tests="11" time="0.091" timestamp="2012-05-17T22:55:19">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="RU" />
@@ -63,7 +63,7 @@
     <property name="copylibs.rebase" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner javaqueue.PriorityQueueTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/larkina/projects/Cpp_programming/Queue/build/test/results/TEST-javaqueue.PriorityQueueTest.xml crashfile=/home/larkina/projects/Cpp_programming/Queue/build/junitvmwatcher4912867081651955637.properties propsfile=/home/larkina/projects/Cpp_programming/Queue/build/junit5881174575194835632.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner javaqueue.PriorityQueueTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/larkina/projects/Cpp_programming/Queue/build/test/results/TEST-javaqueue.PriorityQueueTest.xml crashfile=/home/larkina/projects/Cpp_programming/Queue/build/junitvmwatcher8594616688282454639.properties propsfile=/home/larkina/projects/Cpp_programming/Queue/build/junit7686988967128114536.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -419,25 +419,26 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
   </properties>
-  <testcase classname="javaqueue.PriorityQueueTest" name="testSize" time="0.003" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testContains" time="0.001" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testRemove" time="0.001" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testClear" time="0.005" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testIterator" time="0.002" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testAdd" time="0.001" />
-  <testcase classname="javaqueue.PriorityQueueTest" name="testPeek" time="0.001" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testAdd" time="0.002" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testPeek" time="0.0" />
   <testcase classname="javaqueue.PriorityQueueTest" name="testPoll" time="0.002" />
   <testcase classname="javaqueue.PriorityQueueTest" name="testDelete" time="0.0" />
   <testcase classname="javaqueue.PriorityQueueTest" name="testOffer" time="0.001" />
-  <system-out><![CDATA[size
+  <testcase classname="javaqueue.PriorityQueueTest" name="testSize" time="0.0" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testContains" time="0.001" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testRemove" time="0.0" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testClear" time="0.006" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testIterator" time="0.002" />
+  <testcase classname="javaqueue.PriorityQueueTest" name="testConstructor" time="0.001" />
+  <system-out><![CDATA[add
+peek
+delete
+offer
+size
 contains
 remove
 clear
 iterator
-add
-peek
-delete
-offer
-]]></system-out>
+I'm constructor test! :)]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

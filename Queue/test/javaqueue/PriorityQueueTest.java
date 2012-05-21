@@ -183,4 +183,14 @@ public class PriorityQueueTest {
             it_int.remove();
         }
     }
+    
+    @Test
+    public void testConstructor(){
+        System.out.print("I'm constructor test! :)");
+        for(int i = 0; i < 100; ++i)
+            int_heap.add(i);
+        PriorityQueue<Integer> hh = new PriorityQueue<>(int_heap);
+        for(int i = 0; i < 100; ++i)
+            assertEquals(i, (int)hh.poll());
+    }
 }
