@@ -47,14 +47,13 @@ public class PriorityQueue<T> {
     }
 	
     public PriorityQueue(){
-            this(DEFAULT_CAPACITY, null);
+        this(DEFAULT_CAPACITY, null);
     }
 
     public PriorityQueue(PriorityQueue<T> pq){
         this.comp = pq.comparator();
         h = new Object[pq.size()];
-        while (pq.size() != 0)
-            add(pq.poll());
+        System.arraycopy(pq.h, 0, pq, 0, heap_size);
     }
     
     private void swap(int i, int j, Object[] arr) {
@@ -63,14 +62,14 @@ public class PriorityQueue<T> {
         arr[j] = t;
     }
 
-    private void siftup(int i) {
+    private void siftUp(int i) {
         if (i / 2 == 0) {
             return;
         }
         if (comp != null) {
             if (comp.compare((T)h[i / 2], (T)h[i]) == 1) {
                 swap(i / 2, i, h);
-                siftup(i / 2);
+                siftUp(i / 2);
             }
         }
         else {
@@ -78,12 +77,12 @@ public class PriorityQueue<T> {
             Comparable<T> right = (Comparable<T>)h[i];
             if(left.compareTo((T)right) == 1){
                 swap(i / 2, i, h);
-                siftup(i / 2);
+                siftUp(i / 2);
             }
         }
     }
 
-    private void siftdown(int i) {
+    private void siftDown(int i) {
         int s;
         boolean res;
         if (comp != null)
@@ -117,7 +116,7 @@ public class PriorityQueue<T> {
         }
         if (s != i) {
             swap(s, i, h);
-            siftdown(s);
+            siftDown(s);
         }
     }
 
@@ -135,7 +134,7 @@ public class PriorityQueue<T> {
             }
         }
         h[heap_size] = x;
-        siftup(heap_size);
+        siftUp(heap_size);
     }
 
     public T peek() {
@@ -151,7 +150,7 @@ public class PriorityQueue<T> {
     protected void delete(int i) {
         swap(i, heap_size, h);
         heap_size--;
-        siftdown(i);
+        siftDown(i);
     }
 	
     public void offer(T x){
